@@ -1,0 +1,6 @@
+B
+ID	VALUE
+1	L
+3	D
+1	Y
+3	E
