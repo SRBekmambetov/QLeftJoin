@@ -47,14 +47,6 @@ public class Row implements Comparable<Row> {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Row{" +
-                "id=" + id +
-                ", valueList=" + valueList +
-                '}';
-    }
-
     public Row createRowFromTwoTables(Row row1, Row row2) {
         List<String> valueList = new ArrayList<>();
         valueList.addAll(row1.getValuesList());
