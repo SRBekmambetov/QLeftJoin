@@ -1,4 +1,4 @@
-package ru.srb.tsc.leftjoin;
+package ru.tsc.srb.leftjoin;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -52,10 +52,7 @@ public class CreateQuerySortedLinkedList {
                 } else if (row1.getId() > row2.getId()) {
                     rowsList2.remove(row2);
                 } else {
-                    List<String> valueList = new LinkedList<>();
-                    valueList.addAll(row1.getValuesList());
-                    valueList.addAll(row2.getValuesList());
-                    Row row = new Row(row1.getId(), valueList);
+                    Row row = row1.createRowFromTwoTables(row1, row2);
                     resultRowsLinkedList.add(row);
                 }
             }
@@ -67,11 +64,14 @@ public class CreateQuerySortedLinkedList {
         List<Row> rowsList2 = originalTablesFromFileList.get(1).getRowsList();
         for (int i = 0; i < rowsList1.size(); i++) {
             Row row1 = rowsList1.get(i);
-            Row row = new Row(row1.getId(), row1.getValuesList());
+            int id = row1.getId();
+            List<String> valuesList = row1.getValuesList();
+            Row row = new Row(id, valuesList);
             if (!rowsList2.contains(row)) {
                 resultRowsLinkedList.add(row);
             }
         }
+        Collections.sort(resultRowsLinkedList);
         System.out.println("Результат SortedLinkedList:");
         PrintList.printListResult(linkedList, resultRowsLinkedList);
     }

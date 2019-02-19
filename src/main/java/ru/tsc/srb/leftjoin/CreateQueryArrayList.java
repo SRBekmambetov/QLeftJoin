@@ -1,4 +1,4 @@
-package ru.srb.tsc.leftjoin;
+package ru.tsc.srb.leftjoin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +42,7 @@ public class CreateQueryArrayList {
                 Row row1 = rowsList1.get(i);
                 Row row2 = rowsList2.get(j);
                 if (row1.getId() == row2.getId()) {
-                    List<String> valueList = new ArrayList<>();
-                    valueList.addAll(row1.getValuesList());
-                    valueList.addAll(row2.getValuesList());
-                    Row row = new Row(row1.getId(), valueList);
+                    Row row = row1.createRowFromTwoTables(row1, row2);
                     resultRowsArrayList.add(row);
                 }
             }

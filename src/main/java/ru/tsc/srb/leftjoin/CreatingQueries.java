@@ -1,4 +1,4 @@
-package ru.srb.tsc.leftjoin;
+package ru.tsc.srb.leftjoin;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -64,7 +64,6 @@ public class CreatingQueries {
         CreateQueryMap createQueryMap = new CreateQueryMap();
         createQueryMap.createMaps(originalTablesFromFileList);
         createQueryMap.createMapRowsInnerJoinTable();
-        createQueryMap.createAndPrintMapRowsLeftJoinTable();
         createQueryMap.printMaps(originalTablesFromFileList);
         createQueryMap.createAndPrintMapRowsLeftJoinTable();
     }

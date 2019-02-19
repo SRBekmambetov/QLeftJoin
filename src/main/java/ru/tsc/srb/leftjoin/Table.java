@@ -1,4 +1,4 @@
-package ru.srb.tsc.leftjoin;
+package ru.tsc.srb.leftjoin;
 
 import java.util.List;
 

@@ -1,5 +1,6 @@
-package ru.srb.tsc.leftjoin;
+package ru.tsc.srb.leftjoin;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -52,5 +53,13 @@ public class Row implements Comparable<Row> {
                 "id=" + id +
                 ", valueList=" + valueList +
                 '}';
+    }
+
+    public Row createRowFromTwoTables(Row row1, Row row2) {
+        List<String> valueList = new ArrayList<>();
+        valueList.addAll(row1.getValuesList());
+        valueList.addAll(row2.getValuesList());
+        Row row = new Row(row1.getId(), valueList);
+        return row;
     }
 }

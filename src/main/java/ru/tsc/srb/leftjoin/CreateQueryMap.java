@@ -1,4 +1,4 @@
-package ru.srb.tsc.leftjoin;
+package ru.tsc.srb.leftjoin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class CreateQueryMap {
 
-    private Map<Integer, List<Row>> map1 = new HashMap<>();
-    private Map<Integer, List<Row>> map2 = new HashMap<>();
-    private Map<Integer, List<Row>> resultMap = new HashMap<>();
+    private Map<Integer, List<Row>> map1;
+    private Map<Integer, List<Row>> map2;
+    private Map<Integer, List<Row>> resultMap;
     private List<Row> resultMapList;
 
     public CreateQueryMap() {
@@ -45,10 +45,14 @@ public class CreateQueryMap {
         System.out.println();
         System.out.println("Пример Map:");
         System.out.println();
+        System.out.println("A");
+        System.out.println("ID VALUE ");
         for (List<Row> rowsList1: map1.values()) {
             PrintList.printRowsList(rowsList1);
         }
-        System.out.println("");
+        System.out.println();
+        System.out.println("B");
+        System.out.println("ID VALUE ");
         for (List<Row> rowsList2: map2.values()) {
             PrintList.printRowsList(rowsList2);
         }
@@ -64,11 +68,7 @@ public class CreateQueryMap {
                     for (int i = 0; i < rowsList1.size(); i++) {
                         for (int j = 0; j < rowsList2.size(); j++) {
                             Row row1 = rowsList1.get(i);
-                            Row row2 = rowsList2.get(j);
-                            List<String> valuesList = new ArrayList<>();
-                            valuesList.addAll(row1.getValuesList());
-                            valuesList.addAll(row2.getValuesList());
-                            Row row = new Row(row1.getId(), valuesList);
+                            Row row = row1.createRowFromTwoTables(row1, rowsList2.get(j));
                             resultMapList.add(row);
                         }
                     }
@@ -91,6 +91,7 @@ public class CreateQueryMap {
         System.out.println();
         System.out.println("Результат Map:");
         System.out.println();
+        System.out.println("ID A.VALUE B.VALUE ");
         for (List<Row> rowsList: resultMap.values()) {
             PrintList.printRowsList(rowsList);
         }

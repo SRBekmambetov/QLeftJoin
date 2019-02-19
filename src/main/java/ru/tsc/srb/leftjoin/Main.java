@@ -1,4 +1,4 @@
-package ru.srb.tsc.leftjoin;
+package ru.tsc.srb.leftjoin;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -6,6 +6,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
+
         if (args.length != 2) {
             System.out.println("Некорректно введены параметры на вход");
             return;
@@ -17,12 +18,11 @@ public class Main {
             try {
                 creatingQueries.createTableFromFile(fileTable);
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                System.out.println("Файл не найден");
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Файл не доступен для чтения");
             }
         }
-
         creatingQueries.createQueryList();
     }
 }
